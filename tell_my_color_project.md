@@ -40,12 +40,22 @@ banner design, logo design, web programming, ...
 
 Hi everyone, 
 
-My full name Nguyen Thanh Dat.
+My full name Nguyen Thanh Dat. Can call me is Dat
 
-Today, I show my project about palettes.
+Experiences: Frontend for 2 years, Backend for 1 year.
 
-First, About me (Slide 1)
+Technology used: Javascript, jQuery, Postgres, Vuejs, Elasticsearch,..
 
+You can see this website show all palettes.
+
+Website features: 
+
+    + login, logout
+    + Add new palette
+    + use elasticsearch for searching function
+    + Sorting by date, like
+
+Thank you for listening. Do you question for me?
 
 
 
