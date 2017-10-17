@@ -65,7 +65,7 @@ loạt các khách hàng - để tìm hiểu thêm về cách tiếp cận của
 
 ![Netflix's approach to handle different clients](images/b_a_a_g_u_n_2.jpg)
 
-*Netflix's approach to handle different clients, [source](https://www.slideshare.net/yunongx/paved-paas-to-microservices)*
+*Cách tiếp cận của Netflix để xử lý các khách hàng khác nhau, [nguồn](https://www.slideshare.net/yunongx/paved-paas-to-microservices)*
 
 ## Chức năng API Gateway
 
@@ -82,7 +82,7 @@ thể định nghĩa điểm cuối mới trong API Gateway của bạn để h�
 
 ![API Gateway as microservices entry point](images/b_a_a_g_u_n_3.png)
 
-*API Gateway as microservices entry point*
+*API Gateway như điểm vào microservices*
 
 ## Thiết kế tiến hóa
 `----------------------------Có vẫn đề ở đây------------------------------`
@@ -103,7 +103,7 @@ monolith đến microservices.
 
 ![Evolutionary design with API Gateway](images/b_a_a_g_u_n_4.png)
 
-*Evolutionary design with API Gateway*
+*Thiết kế tiến hóa với API Gateway*
 
 ## Xác thực
 
@@ -118,7 +118,7 @@ xác thực dựa trên *cookie* và *token*.
 
 ![API Gateway with Authentication](images/b_a_a_g_u_n_5.png)
 
-*API Gateway with Authentication*
+*API Gateway xác thực*
 
 ## Tập hợp dữ liệu
 `----------------------------Có vẫn đề ở đây------------------------------`
@@ -133,3 +133,25 @@ và tín dụng như một phần dữ liệu cho khách hàng. Lưu ý, đây l
 được quản lý bới các microservices khác nhau. 
 
 ![Data aggregation](images/b_a_a_g_u_n_6.png)
+
+## Chuyển đổi định dạng chuỗi
+
+Có thể xảy ra rằng chúng tôi cần hỗ trợ khách hàng với yêu cầu định dạng chuỗi dữ liệu khác nhau. 
+
+Hãy tưởng tượng một tính huống mà microservices của chúng ta sử dụng JSON, nhưng một trong những khách hàng của chúng ta sử dụng các API XML. Trong trường hợp này, chúng ta có thể chuyển đổi JSON sang XML vào API Gateway thay vì triển khai nó trong tất cả microservices.
+
+![Serialization format transformation](images/b_a_a_g_u_n_7.png)
+
+## Chuyển đổi giao thức
+
+Kiến trúc microservices cho phép **giao thoa đa giao thức** để đạt được lợi ích của các công nghệ khác nhau. Tuy nhiên hầu hết khách hàng chỉ hỗ trợ một giao thức. Trong trường hợp này, chúng ta cần phải thay đổi các giao thức dịch vụ cho khách hàng.
+
+Một API Gateway cũng có thể xử lý thay đổi giao thức giữa khách hàng và microservices.
+
+Trong ảnh tiếp theo, bạn có thể thấy làm thế nào để khách hàng mong muốn tất cả các giao thiếp thông qua HTTP REST trong khi bên trong các dịch vụ microservice của chúng ta sử dụng gRPC và GraphQL.
+
+![Protocol transformation](images/b_a_a_g_u_n_8.png)
+
+## Giới hạn tốc độ và bộ nhớ đệm
+
+Trong ví dụ trước, bạn có thể thấy rằng chúng ta có thể đặt lớp tư duy như xác thực và API Gateway. Khác với xác thực, bạn có thể thực hiện giới hạn tốc độ, bộ nhớ đệm và các tính năng đáng tin cậy khác trong API Gateway.
