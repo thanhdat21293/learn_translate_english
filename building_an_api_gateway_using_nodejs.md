@@ -155,3 +155,77 @@ Trong ảnh tiếp theo, bạn có thể thấy làm thế nào để khách hà
 ## Giới hạn tốc độ và bộ nhớ đệm
 
 Trong ví dụ trước, bạn có thể thấy rằng chúng ta có thể đặt lớp tư duy như xác thực và API Gateway. Khác với xác thực, bạn có thể thực hiện giới hạn tốc độ, bộ nhớ đệm và các tính năng đáng tin cậy khác trong API Gateway.
+
+`--------------- Có vấn đề -------------------------`
+## API Gateway không ngoan
+
+Trong khi triển khai API Gateway, bạn nên tránh đặt logic không chung chung như tên miền chuyển đổi dữ liệu cụ thể tới cổng của bạn.
+
+Các dịch vụ nên luôn luôn có **toàn quyền sở hữu miền dữ liệu** của họ. Xây dựng một 
+API Gateway không ngoan **kiểm soát từ các đội dịch vụ** đó là chống lại triết lý 
+của microservices.
+
+Điều này là tại sao bạn nên cẩn thận với tập hợp dữ liệu trong API Gateway của bạn - 
+nó có thể rất mạnh mẽ nhưng cũng có thể dẫn đến việc chuyển đổi dữ liệu cụ thể hoặc 
+quy tắc xử lý mà bạn nên tránh.
+
+Luôn luôn xác định **trách nhiệm rõ ràng** cho cổng API của bạn và chỉ bao gồm lớp tư duy chung trong nó.
+
+## Cổng API của Node.js
+
+Trong khi bạn muốn làm đơn giản hóa mọi thứ trong cổng API của bạn như yêu cầu 
+định tuyến tới các dịch vụ cụ thể, bạn có thể **sử dụng một reverse proxy** 
+(reverse proxy là một loại proxy server trung gian giữa một máy chủ và các clients gởi tới các yêu cầu.) như nginx. 
+Nhưng tại một vài điểm, bạn có thể cần phải thực hiện tư duy đó không được hỗ trợ 
+trong các proxy nói chung. Trong trường hợp này, bạn có thể triển khai cổng API cho 
+riêng bạn trong Node.js.
+
+Trong Node.js bạn có thể sử dụng gói [http-proxy](https://www.npmjs.com/package/http-proxy) 
+để đơn giản yêu cầu proxy đến một dịch vụ cụ thể hoặc bạn có thể sử dụng thêm tính năng 
+[express-gateway](http://www.express-gateway.io/) để tạo các cổng API.
+
+Trong ví dụ cổng API đầu tiên của chúng tôi, chúng tôi xác thực yêu cầu trước khi 
+chúng tôi ủy quyền cho dịch vụ người dùng.
+
+```javascript
+const express = require('express')
+const httpProxy = require('express-http-proxy')
+const app = express()
+
+const userServiceProxy = httpProxy('https://user-service')
+
+// Authentication
+app.use((req, res, next) => {
+  // TODO: my authentication logic
+  next()
+})
+
+// Proxy request
+app.get('/users/:userId', (req, res, next) => {
+  userServiceProxy(req, res, next)
+})
+```
+
+Cách tiếp cận khác có thể là khi bạn tạo một yêu cầu mới trong cổng API của bạn, 
+và bạn trả lại kết quả cho người dùng:
+
+```javascript
+const express = require('express')
+const request = require('request-promise-native')
+const app = express()
+
+// Resolve: GET /users/me
+app.get('/users/me', async (req, res) => {
+  const userId = req.session.userId
+  const uri = `https://user-service/users/${userId}`
+  const user = await request(uri)
+  res.json(user)
+})
+```
+
+## Tóm tắt cổng API node.js
+
+Cổng API cung cấp một lớp tư duy để phục vụ những yêu cầu khách hàng với kiến trúc 
+microservices. Nó giúp giữ những dịch vụ nhỏ của bạn và miền tập trung. Bạn có thể 
+đặt tư duy chung khác nhau đến cổng API của bạn, nhưng bạn nên tránh các cổng API 
+khổng lồ khi chúng điều khiển từ các nhóm dịch vụ.
