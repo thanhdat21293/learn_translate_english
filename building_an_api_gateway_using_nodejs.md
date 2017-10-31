@@ -1,5 +1,7 @@
 # Xây dựng API Gateway sử dụng Nodejs
 
+Nguồn: [https://blog.risingstack.com/building-an-api-gateway-using-nodejs/](https://blog.risingstack.com/building-an-api-gateway-using-nodejs/)
+
 Dịch vụ trong một kiến trúc Microservices chia sẻ một vài yêu cầu chung về chứng thực 
 và vận chuyển khi chúng cần phải được truy cập bởi người dùng bên ngoài. API Gateway 
 cung cấp một **lớp chia sẻ** để xử lý sự khác biệt giữa dịch vụ giao thức và hoàn thành 
