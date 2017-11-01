@@ -83,22 +83,49 @@ I apologize for
 (Hôm nay ...)
 
 thunder: Sấm sét
+
 sunny: nắng
+
 cloudy: nhiều mây
+
 overcast: u ám
+
 fog: sương mù
+
 wind: gió
 
 drizzle: mưa phùn
+
 rain: mưa
+
 flood: mưa lớn
+
 sleet: mưa tuyết
+
 hail: mưa đá
 
 hot: nóng
+
 warm: ấm áp
+
 bit chilly: hơi lạnh (lạnh lẽo)
+
 cold: lạnh
+
+## Daily routine (Công việc hằng ngày)
+
+Brush my teeth: đánh răng
+
+Suft FB: Lướt fb
+
+At 6 AM, I ....: Lúc 6 giờ sáng tôi ....
+
+Do you often do in the morning?: Bạn thường làm gì vào buổi sáng
+
+What is your favorite food?: Món ăn yêu thích của bạn là gì?
+
+Do you have a breakfast? Bạn có ăn sáng không?
+
 
 
 

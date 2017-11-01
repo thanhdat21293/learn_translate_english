@@ -2,9 +2,9 @@
 
 Nguồn: [https://blog.risingstack.com/building-an-api-gateway-using-nodejs/](https://blog.risingstack.com/building-an-api-gateway-using-nodejs/)
 
-Dịch vụ trong một kiến trúc Microservices chia sẻ một vài yêu cầu chung về chứng thực 
+Các dịch vụ trong một kiến trúc Microservices chia sẻ một vài yêu cầu chung về chứng thực 
 và vận chuyển khi chúng cần phải được truy cập bởi người dùng bên ngoài. API Gateway 
-cung cấp một **lớp chia sẻ** để xử lý sự khác biệt giữa dịch vụ giao thức và hoàn thành 
+cung cấp một **lớp tư duy** để xử lý sự khác biệt giữa dịch vụ giao thức và hoàn thành 
 các yêu cầu của khách hàng riêng như trình duyệt máy tính, thiết bị di động và các hệ 
 thống kế thừa.
 
@@ -225,7 +225,7 @@ app.get('/users/me', async (req, res) => {
 })
 ```
 
-## Tóm tắt cổng API node.js
+## Tóm tắt về cổng API node.js
 
 Cổng API cung cấp một lớp tư duy để phục vụ những yêu cầu khách hàng với kiến trúc 
 microservices. Nó giúp giữ những dịch vụ nhỏ của bạn và miền tập trung. Bạn có thể 
